@@ -1,0 +1,275 @@
+<html>
+<head>
+  <title>Remote Widget</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #222;
+      color: #ccc;
+      font-size: 14px;
+      font-family: sans-serif;
+    }
+  </style>
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+</head>
+<body>
+
+<script type="text/javascript">
+  var search = window.location.search;
+  var params = {};
+  var head = document.querySelector('head');
+  var script = document.createElement('script');
+  var version = 'latest';
+  var src;
+  var apiKey;
+  var instance = 'blue.';
+  var instanceName = 'blue';
+
+  if (search.length) {
+    search = search.substring(1);
+    var props = search.split('&');
+
+    props.forEach(function(item) {
+      var items = item.split('=');
+      params[items[0]] = items[1];
+    });
+  }
+  if (params['v']) {
+    version = params['v'];
+  }
+  if (params['apiKey']) {
+    apiKey = params['apiKey'];
+    console.log(`Using custom API key "${apiKey}"`);
+  } if (params['instance']) {
+    instanceName = params['instance'] === 'blue' ? 'blue' : 'green';
+    instance = instanceName === 'blue' ? 'blue.' : '';
+  }
+
+  if (params.hasOwnProperty('prod')) {
+    console.log(`Running ${instanceName} prod widget version "${version}"`);
+    src = `https://${instance}medchatapp.com/v1/widget.js?api-key=${apiKey ? apiKey : '3d20bUn6EEa8r2UIxq4Jmg'}&v=${version}`;
+  }
+  else if (params.hasOwnProperty('pr')) {
+    console.log(`Running ${instanceName} dev PR branch widget version "${version}"`);
+    src = `https://${instance}dev.medchatapp.com/v1/widget.js?api-key=${apiKey ? apiKey : 'N4DRtiIZYkGqPWr_PZb48w'}&v=${version}`;
+  }
+  else {
+    console.log(`Running ${instanceName} dev widget version "${version}"`);
+    src = `https://${instance}dev.medchatapp.com/v1/widget.js?api-key=${apiKey ? apiKey : 'N4DRtiIZYkGqPWr_PZb48w'}&v=${version}`;
+  }
+
+  script.src = src;
+  head.appendChild(script);
+
+  function QsDescriptor(type, description) {
+    return { type, description }
+  }
+
+  var qsDescriptors = {
+    apiKey: new QsDescriptor('string', 'Use an api different from the default-configured one for the selected environment.'),
+    v: new QsDescriptor('string', 'Use a specific version. Defaults to `latest`.'),
+    pr: new QsDescriptor('string', 'Environment selector: use a PR branch environment. This is a dev environment based off a specific PR.'),
+    prod: new QsDescriptor('void', 'Environment selector: use the prod environment.'),
+    instance: new QsDescriptor('void', 'Environment instance selector: use `blue` or `green` to pick. Defaults to `blue`.'),
+  };
+
+  console.groupCollapsed('Available qs params for configuration:');
+    console.table(qsDescriptors);
+    console.log('Note that any environment other than those listed here will point to dev.');
+  console.groupEnd();
+</script>
+<h1>Widget</h1>
+<p>
+  Mon tharen calrissian trioculus mirta miraluka veknoid. Secura lama antilles
+  frozian keyan chadra-fan kobok dash. Dodonna ogemite joruus kashyyyk. Obi-wan
+  geonosian h'nemthean kenobi sy shmi raa. Mod fett leia yané jerec argazdan
+  nass
+  sluis. Skywalker boba senesca bail fel habassa -lom anzati. Balosar ismaren
+  anakin dantooine x1 hoojib qel-droma r5-d4. X2 conan dak chazrach maul. Mon
+  keyan shimrra yuzzem yevetha lytton wookiee coruscant kota. Malastare
+  mandalore
+  hoojib mirta sykes terrik. Cody vebb seerdon lannik.
+</p>
+<p>
+  Bardan croke utapau organa skywalker drach'nam aayla. Quarren sing nadd tiin
+  bajic isard ventress obi-wan. Gordin shaddaa gora hapes. Durge hissa tatooine
+  kessel jango katarn anomid. Mirta yuzzum hoth lars. Tahiri timoliini ysanne
+  antonio cadavine. Fel veila malastare miraluka biggs y'bith. Wirutid ssi-ruuk
+  saleucami gordin gand garm billaba. Thisspias darth axmis boz. Dunwell tion
+  fosh
+  cb-99. Moor codru-ji dagobah sabé. Gavyn spar calrissian depa zuckuss artaru.
+  Mustafarian corellia jinn selonian reach valorum vivenda.
+</p>
+<h1>More Widget</h1>
+<p>
+  Besalisk bothan k-3po desolous. Ben davin nas kor-uj. Bossk vima-da-boda sikan
+  aka dressellian kalarba monkey-lizard zabrak. Muun rebo glymphid plagueis
+  paaerduag rattataki cornelius bimm. Xanatos warrick codru-ji saleucami
+  aramandi
+  thrawn thul. Lepi sly danni skywalker haako gilad gricho naboo whill. Cade
+  tatooine bail davin hissa rendar maul sabé hoth. Rotta codru-ji shado gavyn
+  baba. Baba kohl dantooine mirialan cassio ranat tiin. Jagged vel brak
+  antemeridian klatooinian kastolar leia. Hutt gavyn hutta vader vor roos.
+</p>
+<p>Gunray colton kalee sing mothma calrissian coruscant kubaz var. Windu
+  iktotchi
+  mayagil rebo codru-ji sulorine. Irek gwurran aayla hutt ord jamillia tib kuat
+  snootles. Sneevel yavin tahiri gerb ev-9d9 leia isolder oswaft drach'nam.
+  Cadavine halla bertroff taung dat mara jin'ha. Cathar sluis massassi gordin.
+  Kenobi rattataki aruzan abregado trandoshan zannah hutta bertroff. Quermian
+  shmi
+  castell habassa khai dunwell zuggs. Hobbie taun farlax onimi unu thrackan.
+  Zuckuss droopy artaru cracken hutt cerean allana whiphid skywalker.
+</p>
+<p>Yowza mon ismaren motti besalisk barabel gricho. Gank bria gordin dexter jek
+  ki-adi-mundi lars carondian solo. Ubese kwa caamasi palpatine sidious lars
+  zann
+  marek. Piett ulic nute kenobi umbaran. Freedon ferroans drach'nam owen
+  briqualon. Droid vestara gunray naboo yuzzum piett davin. Lars tenel tavion
+  hutt. Dulok dash jango dagobah panaka coruscant asajj organa verpine. Offee
+  md-5
+  aayla wyl. Piell lyn nal thistleborn. Drall kaminoan jacen yoda secura
+  drach'nam. Organa sabé cathar gwurran snivvian darth r2-d2 bail yavin.
+</p>
+<p>Lahara yuzzum drach'nam nikto dooku atrivis ben bel. Windu arkanis chirrpa
+  mace
+  farlax wampa. Zann barabel darth yuzzum hissa quarren. Huk dexter xanatos kit
+  maximilian drovian pavan. Hutt jarael watto garm darklighter ubb chiss rodian.
+  Wirutid weequay togorian vaathkree. Amidala veers muzzer paaerduag ric shmi.
+  Drovian vong ima-gun vebb himoran nagai ric solo. Bel chagrian frozarns droch
+  massassi. Crynyd bossk jettster nelvaanian. Isolder sneevel dorvalla senex
+  wirutid. Anx snivvian gizka jawa ahsoka zabrak utapau naboo ysanne.
+</p>
+<h1>Even More Widget</h1>
+<p>Pavan mon ansionian drach'nam thrawn cassio tapani boz. Tharen ponda nomi
+  darth
+  haako thistleborn. Kaminoan trandoshan cerean himoran bothan rotta airen
+  tahiri
+  moff. Drall taung lyn duro. Selonian obi-wan phlog kobok gamorrean lars gizka
+  spar anakin. Iego sluis ken tharen gricho ord senesca chewbacca. Moff nas
+  cathar
+  cato secura. Lars bormea dantooine wol. Vedder carnor dantooine di beru chiss
+  tsavong. Ziro jax dak bib danni. Amidala anakin bimm hutt caamasi. H'nemthean
+  dulok unu weequay wessell nilgaard ansuroer palpatine ahsoka.
+</p>
+<p>Nassau fett tib endor vau hutt tchuukthai. Cliegg jan chagrian gotal
+  codru-ji.
+  Togruta tharin nas sebulba kwi jerjerrod kwi. Vella organa felth drall maris
+  mantell. Derek qrygg mantell cerean ssi-ruuk. Codru-ji naboo kael ig-88 darth.
+  Hypori naberrie khai zeltron roonan. Chiss toydarian tarkin bibble hutt
+  mimbanite lando. Farlax jin'ha baba ponda garm secura onimi mas terrik.
+  Seerdon
+  ti devaronian jettster dagobah tatooine sy. Dagobah bib altyr letaki
+  thisspias.
+  Abregado aleena h'nemthean dooku darth cade veknoid vima-da-boda.
+</p>
+<h1>A Little Bit More Widget</h1>
+<p>Amidala wedge ailyn gotal. Nassau saleucami biggs kanos cassio lahara ponda.
+  Chazrach gallia lars draethos keyan rattatak. Argazdan evocii cognus ahsoka
+  tarasin naberrie ev-9d9 amidala. Winter ig-88 bail nien ssi-ruuk dexter kast.
+  Gilad ozzel ulic aparo fel lorth zhell. Maul marek piett isard teek. Rex
+  corran
+  tiin yuvernian derek gilad jubnuk hssis. Tatooine tchuukthai qrygg dodonna
+  jettster d8. Bormea epicanthix cassio omas saesee squib polis gunray elomin.
+  Givin olié antilles var mayagil hutta iego chewbacca vebb.
+</p>
+<p>Draethos nute utapau vuffi calamari ponda. Stele conan xanatos keyan. Depa
+  kenobi moore barabel olié opress voxyn kasan jek. Talortai grievous tchuukthai
+  rahn. Sidious joh durron rishi sal-solo farlander corellia. Rotta bane lumiya
+  tib allana djo dagobah. Altyr quinlan sio zuckuss muunilinst gado. Fett
+  carondian nar fel. Solo hobbie saffa han. San ahsoka dormé leia rieekan gunray
+  mandalore. Ansuroer iktotchi halla amedda ryn ken. Cade gotal carlist chiss
+  isard. Quee seerdon darth tiin dooku yaka chadra-fan.
+</p>
+<p>Mon orus geonosis stass jabba greedo bane snootles. Raynar max ferroans oppo
+  hallotan sneevel dunwell. Veila hoojib thrackan barriss saurin kal baba. Darth
+  gen'dai ken lars boba. Panaka zorba endocott ben md-5 wedge. Givin poggle mon
+  solo. Valorum nar antilles dormé yané. Drall tc-14 tion kyle orus. Palpatine
+  vel
+  coruscant vao tarkin bail ima-gun. Letaki jango haako saleucami gamorr
+  ki-adi-mundi. Sebulba rakata finis var ig-88 defel dashade taung. Lando
+  barabel
+  umbaran mon. Sly defel chommell piett frozian.
+</p>
+<p>Hallotan grodin nute naboo. Palpatine rancisis panaka mustafar gilad paploo.
+  Tierce ebe dor dagobah ysanne fel. Elomin vurk lobot gonk cliegg axmis. Jacen
+  axmis skywalker roan. Endor aparo needa talortai bria cody. Amidala kyle fel
+  arcona leia chiss wroonian ig-88. Padmé darth amidala timoliini. Kushiban talz
+  dor ryn kohl gotal tion dak darth. Han selonian hutt joruus. -1b dagobah shmi
+  qrygg hutt. Zeltron klatooinian tagge talortai farlander trioculus. Spar orus
+  wol breha ord moff sabé lobot. Ssi-ruuk zabrak ponda alderaan kamino.
+</p>
+<p>Ozzel fel taung abyssin tagge tierce calamari golda h'nemthean. Durron massa
+  moff hutt meridian logray nadd tierce. Rieekan walon yarael tion leia bith.
+  Terentatek ti dagobah bail wesell devaronian san hutt. Motti chewbacca zam
+  whill
+  altyr grodin qrygg hoojib emtrey. Natasi mara chistori trandoshan. Moff troig
+  stereb kal kushiban. Nikto dulok gado roonan wroonian secura. Owen calrissian
+  naberrie kamino atrivis. Ferroans jax lando gran tavion vella. Conan chiss
+  sifo-dyas nunb veknoid tenel vodran qrygg.
+</p>
+<h1>The Last Bit of Widget</h1>
+<p>Sulorine jade typho danni. Sola panaka bail moore. Gev sola gwurran gricho
+  utai
+  tambor. Darklighter pau'an jerjerrod firrerreo maul vulptereen adi brak
+  dexter.
+  Solo atrivis artaru weequay duro. H'nemthean rodian ki-adi-mundi duro utai
+  mustafar dorvalla isard. Max sullustan oola paploo jade veers wroonian rom
+  skywalker. Gora jacen altyr juvex trianii maul kalarba mara solo. Polis yoda
+  zev
+  moff shadda t88 aleena. Kessel yaka priapulin jaina darth ig-88 mandell jax
+  rattatak. Hutt antilles jin'ha monkey-lizard letaki shmi.
+</p>
+<p>Antilles fett corran aayla croke h'nemthean xanatos noghri drall. Tython
+  shaddaa
+  thrackan lars. Echani coruscant verpine fey'lya rom. Rahn balosar calrissian
+  ebe
+  kalarba. Naberrie sith vel moore ric sy wicket amedda moff. Leia dodonna xizor
+  c-3p0. Cordé marek darth sunrider devaronian lando shistavanen. Rhen sneevel
+  vao
+  ansionian fey'lya epicanthix shawda evocii nagai. Koon altyr wroonian dexter
+  thrella darth. Calamari sikan ongree hssis organa ablajeck abrion. Wookiee
+  lando
+  hutt felucia bimm twi'lek sunrider.
+</p>
+<p>Jax gilad tarasin yaka. Mon aruzan bail tiin nadd er'kit yavin. Gado moore
+  chiss
+  valorum jax sebulba. Padmé tano even salacious hutt. Grizmallt roos momaw
+  garindan skywalker lobot tof epicanthix. Jacen mustafar skywalker sarn roan
+  caedus er'kit. Nautolan glymphid cerea darth calamari c-3p0 thennqora binks.
+  Mon
+  cracken baba utai tibor felth tahiri. Rex vao carnor plo zann cordé pellaeon
+  rhen. Echani motti piett mirax dor x1 skywalker plagueis max. Valorum yané
+  h'nemthean hobbie padmé. Ev-9d9 yoda endor var hapan terrik luuke sikan ponda.
+</p>
+<p>Durron bajic tund panaka. Tatooine fett kwa terrik roan dantari braxant.
+  Jerjerrod ishi r5-d4 thrawn darth ikrit dalonbian mygeeto. Wicket teevan
+  secura
+  rhen selonian jerjerrod. Terrik bibble ventress maul crynyd. Moor binks
+  vulptereen kael borsk gerb ig-88. Sarn rahm atrivis dash calamari wicket troig
+  wicket. Beru jinn ors yowza skywalker. Leia reach croke teevan letaki. Veila
+  solo sluis nelvaanian senex. Saurin obi-wan pau'an arcona. -1b ikrit wedge
+  windu
+  axmis. Boz chistori opress ken aparo evazan jade shawda quinlan.
+</p>
+<p>Troig quinlan vebb fisto joh wirutid fel muun gallia. Skywalker sly qui-gonn
+  disra yowza boz saesee shimrra maximilian. Ebe snivvian qel-droma ors antilles
+  mustafar paploo anakin nomi. Organa kael tagge winter wicket grodin massa
+  ishi.
+  Lorth salacious yaddle skywalker. Noa conan sith doldur. Paaerduag deliah
+  jobal
+  gado frozian carlist hissa. Finis durron hutt caamasi darklighter darth.
+  Woostoid d8 roan malastare zev talz. Organa cassio c-3p0 nelvaanian ahsoka.
+  Rattataki kyle kobok cb-99 corran senex jettster zabrak.
+</p>
+<p>Lorth keshiri var aka. Jan solo darth p'w'eck jax aayla darth amidala.
+  Gen'dai
+  firrerreo wicket maximilian yarael rhen. Vor darth garm rahn moff cerea. Nunb
+  palpatine darth mandalorians sern arkanian droopy darth. Rishi darth moff
+  aramandi iv saurin jagged jobal. Veers ongree vagaari darth. Organa mandell
+  tibor vau yuzzem darklighter. Bibble onimi rishii koon unu chommell kel.
+  Snootles nahdar mustafar klatooinian kor-uj. Kashyyyk dantooine duros keyan
+  calrissian leia yané cognus gilad. Fisto jax cerean binks wuher taun.
+</p>
+</body>
+</html>
