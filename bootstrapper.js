@@ -31,14 +31,14 @@ if (params['instance']) {
 
 if (params.hasOwnProperty('prod')) {
   console.log(`Running ${instanceName} prod with widget version "${version}"`);
-  src = `https://${instance}medchatapp.com/v1/widget.js?api-key=${apiKey ? apiKey : '3d20bUn6EEa8r2UIxq4Jmg'}&v=${version}`;
+  src = `https://${instance}medchatapp.com/widget/widget.js?api-key=${apiKey ? apiKey : '3d20bUn6EEa8r2UIxq4Jmg'}&v=${version}`;
 } else if (params.hasOwnProperty('pr')) {
   var pr = params['pr'];
   console.log(`Running ${instanceName} dev PR branch "${pr}" with widget version "${version}"`);
   src = `https://${instance}dev.medchatapp.com/pr/${pr}/apps/widget/widget.js?api-key=${apiKey ? apiKey : 'N4DRtiIZYkGqPWr_PZb48w'}&v=${version}`;
 } else {
   console.log(`Running ${instanceName} dev with widget version "${version}"`);
-  src = `https://${instance}dev.medchatapp.com/v1/widget.js?api-key=${apiKey ? apiKey : 'N4DRtiIZYkGqPWr_PZb48w'}&v=${version}`;
+  src = `https://${instance}dev.medchatapp.com/widget/widget.js?api-key=${apiKey ? apiKey : 'N4DRtiIZYkGqPWr_PZb48w'}&v=${version}`;
 }
 
 script.src = src;
